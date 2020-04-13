@@ -1,0 +1,65 @@
+.top-rated{
+    width:80vw;
+    margin:auto;
+    padding:0 0 2vw;
+    background-color: rgb(251, 208, 184);
+
+}
+.top-row{
+    width:80vw;
+    height:35vw;
+    display: inline;
+    margin:2vw auto;
+}
+.top-product{
+    width:80vw;
+    display: flex;
+    
+}
+.top-images{
+    width:30vw;
+    height:30vw;
+    margin:auto;
+}
+.top-text{
+    width: 40vw;
+    height:35vw;
+    font-size:2vw;
+    color: #505052;
+    margin: 0 3vw;
+}
+.load-more{
+    background-color: white;
+    font-family: 'Amatic SC', cursive;
+    width:20vw;
+    font-size: 2vw;
+    margin:2vw 30vw;
+}
+
+
+@media screen and (min-width: 1200px){
+    
+    .top-row{
+        height:12vw;
+        margin:5vw 0;
+        display: flex;
+    }
+    h3{
+        font-size: 1vw;
+    }
+    .top-product{
+        width:25vw;
+    }
+    .top-text{
+        width:15vw;
+        height:10vw;
+        font-size:0.7vw;
+        margin:1vw auto 2vw;
+        
+    }
+    .top-images{
+        width:10vw;
+        height:10vw;
+        margin:2vw 1vw;
+    }
+}
