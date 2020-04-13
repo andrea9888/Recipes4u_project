@@ -6,6 +6,7 @@ body{
     margin: 0;
     background-color: #505052;
     overflow-x: hidden;
+
 }
 
 .nav-bar{
@@ -61,7 +62,6 @@ footer .nav-bar li a{
 
 .fork{
     position: fixed;
-    height: 50avw;
     width: 50vw;
     bottom: 0;
     right: -12.5vw;
