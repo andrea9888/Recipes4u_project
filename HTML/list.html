@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/pastaword.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/template.css">
+    <title>Recipes4U</title>
+
+</head>
+<body>
+    <header>
+        <img src="../images/pastaword.svg" alt="logo" class="logo" >
+
+
+        <nav class="nav-bar">
+        
+            <li class="nav-li current" id="home"><a href="#">HOME</a></li>
+            <li class="nav-li drp-dwn-holder" id="list"> <span class="list-phone-hover-fix">LIST</span> 
+                <ul class="drp-dwn">
+                    <li class="drp-dwn-li"><a href="#" target="_blank" id="bal-meal">Balanced meal</a></li>
+                    <li class="drp-dwn-li"><a href="#" id="veg-meal">Vegeterian meal</a></li>
+                    <li class="drp-dwn-li"><a href="#" id="lf-meal">Low-fat meal</a></li>
+                </ul>
+
+            </li>
+            <li class="nav-li" id="saved"><a href="#">FAVOURITES</a></li>
+            <li class="nav-li" id="about-us"><a href="#">ABOUT US</a></li>
+        
+        </nav>
+
+    </header>
+
+
+
+
+        <img src="../images/webdesign-viljuska.svg" alt="Fork" class="fork">
+
+        <div class="form" id="form">
+            <input type="text">
+            <button class="btn" id="btn">Search</button>
+            <div>
+                <input type="radio" class="radio-btn" id="name" name="radio"> <label for="name">Name</label>
+                <input type="radio" class="radio-btn" id="time" name="radio"> <label for="time">Time</label>
+                <input type="radio" class="radio-btn" id="cal" name="radio"> <label for="cal">Max calories</label>
+                <input type="range" name="range" id="range" class="range" min="2" max="40"><label for="range">Max ingredients <span class="rangeValue" id="rangeValue">2</span></label>
+
+            </div>
+        </div>
+
+
+    <footer>
+        <nav class="nav-bar foot-bar">        
+            <li class="nav-li" id="home"><a href="#" target="_blank">HOME</a></li>
+            <li class="nav-li" id="list"><a href="#" target="_blank">LIST</a></li>
+            <li class="nav-li" id="saved"><a href="#" target="_blank">FAVOURITES</a></li>
+            <li class="nav-li" id="about-us" target="_blank"><a href="#">ABOUT US</a></li>
+        </nav>
+
+
+    </footer>
+
+    <script src="../JS/template.js"></script>
+    <script src="../JS/list.js"></script>
+</body>
+</html>
