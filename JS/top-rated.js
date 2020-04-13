@@ -68,9 +68,14 @@ function showRecipeRow(result, count){
       let name = document.createElement("h3");
       name.innerText = result['hits'][i]['recipe']['label']
       let ingr = document.createElement("p");
-      ingr.innerText = "Ingredients: " + "\n" + result['hits'][i]['recipe']['ingredientLines'].join('\n').slice(0,100) + "\n ..." ;
+      if (count === 1){
+        ingr.innerText = "Ingredients: " + "\n" + result['hits'][i]['recipe']['ingredientLines'].join('\n').slice(0,100) + "\n ..." ;
+      }
+      else{
+        ingr.innerText = "Ingredients: " + "\n" + result['hits'][i]['recipe']['ingredientLines'].join('\n').slice(0,40) + "\n ..." ;
+      }
       let health = document.createElement("p");
-      health.innerText = "Health Labels: " + result['hits'][i]['recipe']['healthLabels'].join(', ');
+      health.innerText = "Health Labels: " + result['hits'][i]['recipe']['healthLabels'].join(', ').slice(0,15) + "...";
     
       text.appendChild(name);
       text.appendChild(ingr);
