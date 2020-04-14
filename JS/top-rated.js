@@ -19,8 +19,9 @@ console.log(url);
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(result => {
+    makeSlider(result);
     fillTopRatedContainer(result);
-   
+    
   })
   .catch(error => console.log('error', error));
 
@@ -58,7 +59,7 @@ function showRecipeRow(result, count){
     }
     row = document.createElement("div");
     row.className = "top-row";
-    for (let i=0; i<result['hits'].length; i++){
+    for (let i=10; i<result['hits'].length; i++){
       let newItem = document.createElement("div");
       newItem.className = "top-product";
       let image = document.createElement("img");
@@ -167,7 +168,131 @@ function showRecipeRow(result, count){
   catch(error){
     console.log("No more recipes");
   }
+}
 
+function makeSlider(result){
+  let slider = document.querySelector(".slider-content");
+  showImages();
+  let count = 0;
+  let foodCurr;
+  let foodPrev;
+  let prev = 1;
+  let curr = 1;
+  let numImg = 3;
+  let classImg;
+  let classImgPrev;
+  let key;
+  let isOnDiv;
+
+  function moveImg(val){
+      count++;
+      if(val === 1){
+          if (curr !== numImg){
+              prev = curr;
+              curr = curr + 1;
+              
+          }
+          else {
+              prev = numImg;
+              curr = 1;
+          }
+
+      }
+      
+      else if (val === -1){
+          if(curr !== 1){
+              prev = curr;
+              curr = curr - 1;
+              
+      }
+          else{
+              prev = 1;
+              curr = numImg;
+          }
+
+      }
+
+      showImages(curr, prev);
+      
+  }
+      
+  function showImages(curr=0, prev=0){
+
+    slider.innerHTML = "";
+    let helpList2 = [];
+    for (let i=1;i<10;i++){
+
+      let newFood = document.createElement("div");
+      newFood.className = "new-food";
+      let newFoodImg = document.createElement("img");
+      console.log(result['hits'][i]['recipe']['image']);
+      newFoodImg.src = result['hits'][i]['recipe']['image'];
+      newFoodImg.className = "new-food-image";
+      let newFoodName = document.createElement("p");
+      newFoodName.innerText = result['hits'][i]['recipe']['label'];
+      newFoodName.className = "new-food-name";
+      let readMore = document.createElement("button");
+      readMore.innerText = "Read more";
+      readMore.className = "read-more";
+
+      newFood.appendChild(newFoodImg);
+      newFood.appendChild(newFoodName);
+      newFood.appendChild(readMore);
+
+      if (i%3 !== 0){
+        helpList2.push(newFood);
+      }
+      else{
+        helpList2.push(newFood);
+
+        let newFoodGroup = document.createElement("div");
+        newFoodGroup.className = "new-food-group";
+        helpList2.forEach((elem)=>newFoodGroup.appendChild(elem));
+        helpList2 = [];
+
+        slider.appendChild(newFoodGroup);
+        console.log(newFoodGroup)
+               
+      }  
+      
+    }
+    if(curr !==0 && prev!==0){
+      foodPrev = document.querySelector(".slider-content").children[prev-1];
+      foodPrev.style.display = "none";
+      foodCurr = document.querySelector(".slider-content").children[curr-1];
+      foodCurr.style.display = "flex";
+
+    }
+    
+}
+
+if(count === 0){
+  slider.firstChild.style.display = "flex";
 
 }
 
+
+
+  document.querySelector(".prev").addEventListener("click", function(){moveImg(-1)});
+  document.querySelector(".next").addEventListener("click", function(){moveImg(1)});
+
+  document.querySelector(".slider-content").addEventListener("mouseover", function(){
+      document.addEventListener('keydown', checkKey)});
+  document.querySelector(".slider-content").addEventListener("mouseout", function(){
+          document.removeEventListener('keydown', checkKey); });
+
+  setInterval(() => moveImg(-1), 3000);
+
+
+          
+  function checkKey (event) {
+      let key = event.key; 
+      if (key === "ArrowRight"){
+          moveImg(1);
+      }
+      else if (key === "ArrowLeft"){
+          moveImg(-1);
+      }
+  } 
+
+}

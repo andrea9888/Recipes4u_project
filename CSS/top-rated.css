@@ -108,7 +108,7 @@
 .top-rated-text{
     font-family: 'Amatic SC', cursive;
     font-style: italic;
-    font-size: 2vw;
+    font-size: 1.5vh;
     margin:0 15vw;
     color:white;
     
@@ -182,4 +182,81 @@
         width:15vw;
         margin:0;
     }
+    .top-rated-text{
+        font-size: 2vw;
+    }
+}
+.container1{
+    display: flex;
+}
+.side-bar{
+    width:20vw;
+    display: none;
+}
+
+.slider{
+    width:80vw;
+    margin:auto;
+    display:flex;
+    background-color: white;
+    position: relative;
+}
+.slider-content{
+    width:70vw;
+    display:flex;
+    padding:2vw 2vw 2vw 0;
+    margin:auto;
+    position:relative;
+}
+.prev, .next{
+    font-size: 5vw;
+    position: absolute;
+    color:rgb(242, 142, 124);
+    cursor: pointer;
+}
+.prev{
+    top:10vw;
+    left:1vw;
+}
+.next{
+    top:10vw;
+    right:1vw;
+}
+
+.new-food-group{
+    width:70vw;
+    display:flex;
+    display: none;
+}
+.new-food-image{
+    width:22vw;
+    margin-right:2vw;
+}
+.new-food-name{
+    position: absolute;
+    top:10vw;
+    width:20vw;
+    height:3vw;
+    font-size:3vw;
+    text-align: center;
+    margin-left:1vw;
+    font-family: 'Amatic SC', cursive;
+    display: none;
+}
+
+.new-food-image:hover + .new-food-name{
+    display:block;
+    transition: ease-in .2s;
+}
+.new-food-image:hover{
+    opacity: 0.2;
+}
+.read-more{
+    outline: none;
+    cursor: pointer;
+    margin:0 5vw;
+    font-size: 2vw;
+    letter-spacing: 1px;
+    font-family: 'Amatic SC', cursive;
+    background-color: rgb(214,214,214);
 }
