@@ -237,7 +237,7 @@ function setTable(){
         let favBtn = document.createElement("button");
         favBtn.className = "btn fv-btn";
         //EVent Listener
-        favBtn.addEventListener("click", addToFav);
+        favBtn.addEventListener("focus", addToFav);
         cell.appendChild(favBtn);
         apiDiv.appendChild(cell);
 
@@ -291,17 +291,30 @@ function navHandler(event){
 }
 
 function addToFav(event){
-    let curr = event.target.parentNode.children;
+    
+    let curr = event.target.parentNode.children[0].src;
     var tst = 0;
-    let tstStr = [curr[0].src, curr[1].children[0].innerHTML, curr[1].children[1].innerHTML, curr[1].children[2].  innerHTML, curr[1].children[3].href].join();
+
     for(let x = 0; x < localStorageObj["items"].length; x++){
-        if(localStorageObj["items"][x].join() === tstStr){
+        if(localStorageObj["items"][x][0] === curr){
             tst = 1;
         }
     }
-    if(tst === 0){
-        localStorageObj["items"].push([curr[0].src, curr[1].children[0].innerHTML, curr[1].children[1].innerHTML, curr[1].children[2].innerHTML, curr[1].children[3].href]);
+
+    if(localStorageObj["items"].length >= 10){
+        tst = 1;
+    }
     
+    if(tst === 0){
+        for(let x = 0; x < hitsList.length; x++)
+            if(curr === hitsList[x]["recipe"]["image"]){
+                
+                localStorageObj["items"].push([hitsList[x]["recipe"]["image"], hitsList[x]["recipe"]["label"], hitsList[x]["recipe"]["ingredients"], hitsList[x]["recipe"]["totalTime"], hitsList[x]["recipe"]["url"]]);
+        
+            }
+        }
+        
+        
         fetch('https://api.jsonbin.io/b', {
             method: 'post',
             mode: 'cors',
@@ -316,5 +329,5 @@ function addToFav(event){
             localStorage.setItem("favid", data.id);
         });
 
+    console.log(localStorageObj);
     }
-}
