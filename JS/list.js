@@ -112,13 +112,23 @@ function apireq(param){
                 navigate();
             }
             else{
-                let nRes = document.createElement("div");
+                setTimeout(() => {let nRes = document.createElement("div");
                 nRes.className = "no-res";
+                nRes.innerHTML = "No results...";
                 navigateDiv.appendChild(nRes);
+                }, 1000)
             }
         }
             )
-        .catch(error => console.log(error));
+        .catch(error => {
+            while (navigateDiv.firstChild) {
+                navigateDiv.removeChild(navigateDiv.lastChild);
+            }
+            let nRes = document.createElement("div");
+            nRes.className = "no-res";
+            nRes.innerHTML = "Search limit passed. Wait for one minute.";
+            navigateDiv.appendChild(nRes);
+        });
 
 }
 
