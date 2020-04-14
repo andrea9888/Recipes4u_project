@@ -108,83 +108,10 @@
 .top-rated-text{
     font-family: 'Amatic SC', cursive;
     font-style: italic;
-    font-size: 1.5vh;
-    margin:0 15vw;
+    font-size: 3vh;
+    margin:5vh 10vw;
     color:white;
     
-}
-@media screen and (min-width: 1200px){
-    .top-rated{
-        width:65vw;
-        float:left;
-        margin: 0 10vw 2vw;
-        
-    }
-    .top-row{
-        width:65vw;
-        height:10vw;
-        margin:2vw 0 5vw 1vw;
-        display: flex;
-    }
-    h3{
-        font-size: 1vw;
-    }
-    .top-product{
-        width:21.5vw;
-    }
-    .top-text{
-        width:16.5vw;
-        height:10vw;
-        font-size:0.7vw;
-        margin:1vw 0.5vw 0 0.5vw;
-        
-        
-    }
-    .top-images{
-        width:10vw;
-        height:10vw;
-        margin:2vw 0 0 0;
-    }
-    .load-more{
-        margin: 2vw 20vw;
-        z-index:2;
-    }
-    
-}
-@media screen and (min-width:900px){
-    .modal-window{
-        grid-template-areas: 
-        'name name name name'
-        'image ingr ingr ingr'
-        'image health diet calories';
-       
-    }
-    .x{
-        width:3vw;
-        height:3vw;
-        font-size:2vw;
-    }
-    .image-modal{
-        grid-area: image;
-        width:35vw;
-        height:65vh;
-        margin:0 5vw;
-    }
-    .name-modal{
-        grid-area: name;
-        text-align: center;
-        font-family: 'Amatic SC', cursive;
-        font-size: 3vw;
-    
-    }
-    .modal{
-        font-size: 1.5vw;
-        width:15vw;
-        margin:0;
-    }
-    .top-rated-text{
-        font-size: 2vw;
-    }
 }
 .container1{
     display: flex;
@@ -259,4 +186,116 @@
     letter-spacing: 1px;
     font-family: 'Amatic SC', cursive;
     background-color: rgb(214,214,214);
+}
+@media screen and (min-width: 1200px){
+    .top-rated{
+        width:65vw;
+        float:left;
+        margin: 0 10vw 2vw;
+        
+    }
+    .top-row{
+        width:65vw;
+        height:10vw;
+        margin:2vw 0 5vw 1vw;
+        display: flex;
+    }
+    h3{
+        font-size: 1vw;
+    }
+    .top-product{
+        width:21.5vw;
+    }
+    .top-text{
+        width:16.5vw;
+        height:10vw;
+        font-size:0.7vw;
+        margin:1vw 0.5vw 0 0.5vw;
+        
+        
+    }
+    .top-images{
+        width:10vw;
+        height:10vw;
+        margin:2vw 0 0 0;
+    }
+    .load-more{
+        margin: 2vw 20vw;
+        z-index:2;
+    }
+    .side-bar{
+        display: flex;
+        flex-direction: column;
+    }
+    .slider{
+        width:65vw;
+        margin-left:10vw;
+        padding-top: 2vw;
+
+    }
+    .sllider-content{
+        width:55vw;
+        
+    }
+    .new-food-group{
+        width:55vw;
+        padding-left:5vw;
+    }
+    .new-food-image{
+        width:17vw;
+    }
+    .prev{
+        top:9vw;
+        left:1vw;
+    }
+    .next{
+        top:9vw;
+        right:1vw;
+    }
+    .read-more{
+        font-size: 1.5vw;
+    }
+    .new-food-name{
+        font-size:2vw;
+        height:2vw;
+        top:7vw;
+        width:15vw;
+    }
+}
+
+@media screen and (min-width:900px){
+    .modal-window{
+        grid-template-areas: 
+        'name name name name'
+        'image ingr ingr ingr'
+        'image health diet calories';
+       
+    }
+    .x{
+        width:3vw;
+        height:3vw;
+        font-size:2vw;
+    }
+    .image-modal{
+        grid-area: image;
+        width:35vw;
+        height:65vh;
+        margin:0 5vw;
+    }
+    .name-modal{
+        grid-area: name;
+        text-align: center;
+        font-family: 'Amatic SC', cursive;
+        font-size: 3vw;
+    
+    }
+    .modal{
+        font-size: 1.5vw;
+        width:15vw;
+        margin:0;
+    }
+    .top-rated-text{
+        font-size: 3vw;
+    }
+  
 }
