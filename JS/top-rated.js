@@ -5,7 +5,7 @@ var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 
-var params = {q:"pasta", app_id:"b72cbd9b",  app_key:"2d0049237f953e0bf3e8bf2db35d0661", from:1};
+var params = {q:"pasta", app_id:"b72cbd9b",  app_key:"2d0049237f953e0bf3e8bf2db35d0661", from:1, to:20};
 
 var requestOptions = {
   method: 'GET',
@@ -15,6 +15,7 @@ var requestOptions = {
 };
 var url = new URL("https://api.edamam.com/search");
 url.search = new URLSearchParams(params).toString();
+console.log(url);
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(result => {
@@ -45,6 +46,7 @@ function showBasedOnScreen(obj, count){
 let rowCount;
 
 function showRecipeRow(result, count){
+  let helpList = [];
   try{
     if (topRated.hasChildNodes()){
       for(let i=0;i<topRated.childElementCount;i++){
@@ -56,7 +58,7 @@ function showRecipeRow(result, count){
     }
     row = document.createElement("div");
     row.className = "top-row";
-    for (let i=rowCount; i<rowCount+count; i++){
+    for (let i=0; i<result['hits'].length; i++){
       let newItem = document.createElement("div");
       newItem.className = "top-product";
       let image = document.createElement("img");
@@ -84,7 +86,9 @@ function showRecipeRow(result, count){
       newItem.appendChild(image);
       newItem.appendChild(text);
       
-      row.appendChild(newItem);
+      helpList.push([newItem, result['hits'][i]['recipe']['calories']]);
+      
+
       if (count === 1){
         row.style.display = "flex";
       }
@@ -143,11 +147,16 @@ function showRecipeRow(result, count){
         
       };
     }
-
+    helpList.sort((a,b) => a[1]-b[1]);
+  
+    for (let k=rowCount; k<rowCount+count; k++){
+        row.appendChild(helpList[k][0]);
+     
+    }
     let loadMore = document.createElement("button");
     loadMore.innerText = "Load more";
     loadMore.className = "load-more";
-
+    
     topRated.appendChild(row);
     topRated.appendChild(loadMore);
     load = document.querySelector(".load-more");

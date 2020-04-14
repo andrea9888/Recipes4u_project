@@ -95,7 +95,6 @@
 }
 .calories-modal{
     grid-area: calories;
-    margin: 0 2vw 0;
 }
 .diet-modal{
     grid-area: diet;
@@ -105,6 +104,14 @@
     width: 30vh;
     margin:2vh auto;
     word-break: break-all;
+}
+.top-rated-text{
+    font-family: 'Amatic SC', cursive;
+    font-style: italic;
+    font-size: 2vw;
+    margin:0 15vw;
+    color:white;
+    
 }
 @media screen and (min-width: 1200px){
     .top-rated{
