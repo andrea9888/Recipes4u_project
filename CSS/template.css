@@ -45,7 +45,10 @@ body{
     list-style-type: none;
 }
 
-
+footer li a{
+    position: relative;
+    z-index: 2;
+}
 
 .foot-bar .nav-li{
     background-color: rgb(242, 142, 124);
