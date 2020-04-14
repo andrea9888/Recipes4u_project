@@ -11,6 +11,22 @@ searchBtn.addEventListener("click", search);
 const inpType = document.getElementById("input");
 var navigateObj;
 var hitsList;
+var localStorageObj = {"items": []};
+
+var id = localStorage.getItem("favid");
+if(id && id !== "undefined"){
+    fetch(`https://api.jsonbin.io/b/${id}`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'secret-key': "$2b$10$mYqOBJTUxyvQhz.9nvQay.L0/to7DRDuWCHv5LlOwjr2yUsHK.7w."
+            }
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            localStorageObj = data;
+        });
+}
 
 for(let i = 0; i < btnsList.length; i++){
     btnsList[i].addEventListener("click",(event) =>{
@@ -102,7 +118,7 @@ function apireq(param){
             }
         }
             )
-        .catch(error => alert(error));
+        .catch(error => console.log(error));
 
 }
 
@@ -187,6 +203,11 @@ function setTable(){
             ingred.innerHTML = recipeIng;
         }
         cellTxt.appendChild(ingred)
+        //Preparation time
+        let prepTime = document.createElement("div")
+        prepTime.className = "recipe-tags";
+        prepTime.innerHTML = hitsList[x]["recipe"]["totalTime"] + "m";
+        cellTxt.appendChild(prepTime);
         //Link
         let recipeLink = document.createElement("a");
         recipeLink.href = hitsList[x]["recipe"]["url"];
@@ -194,12 +215,8 @@ function setTable(){
         recipeLink.className = "recipe-link";
         recipeLink.innerHTML = "Recipe link";
         cellTxt.appendChild(recipeLink);
-        //Preparation time
-        let prepTime = document.createElement("div")
-        prepTime.className = "recipe-tags";
-        prepTime.innerHTML = hitsList[x]["recipe"]["totalTime"] + "m";
-        cellTxt.appendChild(prepTime);
         cell.appendChild(cellTxt);
+        //Button
         let favBtn = document.createElement("button");
         favBtn.className = "btn fv-btn";
         //EVent Listener
@@ -257,6 +274,30 @@ function navHandler(event){
 }
 
 function addToFav(event){
-
+    let curr = event.target.parentNode.children;
+    var tst = 0;
+    let tstStr = [curr[0].src, curr[1].children[0].innerHTML, curr[1].children[1].innerHTML, curr[1].children[2].  innerHTML, curr[1].children[3].href].join();
+    for(let x = 0; x < localStorageObj["items"].length; x++){
+        if(localStorageObj["items"][x].join() === tstStr){
+            tst = 1;
+        }
+    }
+    if(tst === 0){
+        localStorageObj["items"].push([curr[0].src, curr[1].children[0].innerHTML, curr[1].children[1].innerHTML, curr[1].children[2].innerHTML, curr[1].children[3].href]);
     
+        fetch('https://api.jsonbin.io/b', {
+            method: 'post',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'secret-key': "$2b$10$mYqOBJTUxyvQhz.9nvQay.L0/to7DRDuWCHv5LlOwjr2yUsHK.7w."
+            },
+            body: JSON.stringify(localStorageObj)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            localStorage.setItem("favid", data.id);
+        });
+
+    }
 }
