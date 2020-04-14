@@ -5,7 +5,7 @@ var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 
-var params = {q:"pasta", app_id:"b72cbd9b",  app_key:"2d0049237f953e0bf3e8bf2db35d0661", from:1};
+var params = {q:"pasta", app_id:"b72cbd9b",  app_key:"2d0049237f953e0bf3e8bf2db35d0661", from:1, to:20};
 
 var requestOptions = {
   method: 'GET',
@@ -15,11 +15,13 @@ var requestOptions = {
 };
 var url = new URL("https://api.edamam.com/search");
 url.search = new URLSearchParams(params).toString();
+console.log(url);
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(result => {
+    makeSlider(result);
     fillTopRatedContainer(result);
-   
+    
   })
   .catch(error => console.log('error', error));
 
@@ -45,6 +47,7 @@ function showBasedOnScreen(obj, count){
 let rowCount;
 
 function showRecipeRow(result, count){
+  let helpList = [];
   try{
     if (topRated.hasChildNodes()){
       for(let i=0;i<topRated.childElementCount;i++){
@@ -56,7 +59,7 @@ function showRecipeRow(result, count){
     }
     row = document.createElement("div");
     row.className = "top-row";
-    for (let i=rowCount; i<rowCount+count; i++){
+    for (let i=10; i<result['hits'].length; i++){
       let newItem = document.createElement("div");
       newItem.className = "top-product";
       let image = document.createElement("img");
@@ -84,23 +87,212 @@ function showRecipeRow(result, count){
       newItem.appendChild(image);
       newItem.appendChild(text);
       
-      row.appendChild(newItem);
+      helpList.push([newItem, result['hits'][i]['recipe']['calories']]);
+      
+
       if (count === 1){
         row.style.display = "flex";
       }
-    }
+      image.onclick = function (event){
+        let recipe = event.target.parentNode;
+        let modalWindow = document.createElement("div");
+        modalWindow.className = "modal-window";
+        modalWindow.innerHTML = "";
+        for(let key in result['hits']){
+          if(result['hits'][key]['recipe']['label'] === recipe.children[1].children[0].innerText){
+            let nameModal = document.createElement("h2");
+            nameModal.innerText = result['hits'][key]['recipe']['label'];
+            nameModal.className = "name-modal";
+            let imageModal = document.createElement("img");
+            imageModal.src = result['hits'][key]['recipe']['image'];
+            imageModal.className = "image-modal";
+            let ingrModal = document.createElement("p");
+            ingrModal.innerText = "INGREDIENTS" + "\n" + result['hits'][key]['recipe']['ingredientLines'].join("\n").slice(0,200);
+            ingrModal.className = "modal ingr-modal";
+            let healthModal = document.createElement("p");
+            healthModal.innerText = "HEALTH LABELS" + "\n" + result['hits'][key]['recipe']['healthLabels'].join("\n");
+            healthModal.className = "modal health-modal";
+            let dietModal = document.createElement("p");
+            dietModal.innerText = "DIET LABELS" + "\n" + result['hits'][key]['recipe']['dietLabels'].join("\n");
+            dietModal.className = "modal diet-modal";
+            let caloriesModal = document.createElement("p");
+            caloriesModal.innerText = "CALORIES: " + parseFloat(result['hits'][key]['recipe']['calories']).toFixed(2);
+            caloriesModal.className = "modal calories-modal";
 
+            let x = document.createElement("button");
+            x.innerText = "X";
+            x.className = "x";
+
+            modalWindow.appendChild(x);
+            modalWindow.appendChild(nameModal);
+            modalWindow.appendChild(imageModal);
+            modalWindow.appendChild(ingrModal);
+            modalWindow.appendChild(caloriesModal);
+            modalWindow.appendChild(healthModal);
+            modalWindow.appendChild(dietModal);
+            
+
+            let container = document.querySelector(".container");
+            let mask = document.createElement("div");
+            mask.className = "mask";
+            container.appendChild(mask);
+            container.appendChild(modalWindow);
+
+            x.onclick = (event) => {
+              container.removeChild(mask);
+              container.removeChild(modalWindow);
+            };
+
+          }
+        }
+        
+      };
+    }
+    helpList.sort((a,b) => a[1]-b[1]);
+  
+    for (let k=rowCount; k<rowCount+count; k++){
+        row.appendChild(helpList[k][0]);
+     
+    }
     let loadMore = document.createElement("button");
     loadMore.innerText = "Load more";
     loadMore.className = "load-more";
-
+    
     topRated.appendChild(row);
     topRated.appendChild(loadMore);
     load = document.querySelector(".load-more");
     load.onclick = () => showRecipeRow(result, count);
     rowCount+=count;
+
   }
   catch(error){
     console.log("No more recipes");
   }
+}
+
+function makeSlider(result){
+  let slider = document.querySelector(".slider-content");
+  showImages();
+  let count = 0;
+  let foodCurr;
+  let foodPrev;
+  let prev = 1;
+  let curr = 1;
+  let numImg = 3;
+  let classImg;
+  let classImgPrev;
+  let key;
+  let isOnDiv;
+
+  function moveImg(val){
+      count++;
+      if(val === 1){
+          if (curr !== numImg){
+              prev = curr;
+              curr = curr + 1;
+              
+          }
+          else {
+              prev = numImg;
+              curr = 1;
+          }
+
+      }
+      
+      else if (val === -1){
+          if(curr !== 1){
+              prev = curr;
+              curr = curr - 1;
+              
+      }
+          else{
+              prev = 1;
+              curr = numImg;
+          }
+
+      }
+
+      showImages(curr, prev);
+      
+  }
+      
+  function showImages(curr=0, prev=0){
+
+    slider.innerHTML = "";
+    let helpList2 = [];
+    for (let i=1;i<10;i++){
+
+      let newFood = document.createElement("div");
+      newFood.className = "new-food";
+      let newFoodImg = document.createElement("img");
+      console.log(result['hits'][i]['recipe']['image']);
+      newFoodImg.src = result['hits'][i]['recipe']['image'];
+      newFoodImg.className = "new-food-image";
+      let newFoodName = document.createElement("p");
+      newFoodName.innerText = result['hits'][i]['recipe']['label'];
+      newFoodName.className = "new-food-name";
+      let readMore = document.createElement("button");
+      readMore.innerText = "Read more";
+      readMore.className = "read-more";
+
+      newFood.appendChild(newFoodImg);
+      newFood.appendChild(newFoodName);
+      newFood.appendChild(readMore);
+
+      if (i%3 !== 0){
+        helpList2.push(newFood);
+      }
+      else{
+        helpList2.push(newFood);
+
+        let newFoodGroup = document.createElement("div");
+        newFoodGroup.className = "new-food-group";
+        helpList2.forEach((elem)=>newFoodGroup.appendChild(elem));
+        helpList2 = [];
+
+        slider.appendChild(newFoodGroup);
+        console.log(newFoodGroup)
+               
+      }  
+      
+    }
+    if(curr !==0 && prev!==0){
+      foodPrev = document.querySelector(".slider-content").children[prev-1];
+      foodPrev.style.display = "none";
+      foodCurr = document.querySelector(".slider-content").children[curr-1];
+      foodCurr.style.display = "flex";
+
+    }
+    
+}
+
+if(count === 0){
+  slider.firstChild.style.display = "flex";
+
+}
+
+
+
+  document.querySelector(".prev").addEventListener("click", function(){moveImg(-1)});
+  document.querySelector(".next").addEventListener("click", function(){moveImg(1)});
+
+  document.querySelector(".slider-content").addEventListener("mouseover", function(){
+      document.addEventListener('keydown', checkKey)});
+  document.querySelector(".slider-content").addEventListener("mouseout", function(){
+          document.removeEventListener('keydown', checkKey); });
+
+  setInterval(() => moveImg(-1), 3000);
+
+
+          
+  function checkKey (event) {
+      let key = event.key; 
+      if (key === "ArrowRight"){
+          moveImg(1);
+      }
+      else if (key === "ArrowLeft"){
+          moveImg(-1);
+      }
+  } 
+
 }
