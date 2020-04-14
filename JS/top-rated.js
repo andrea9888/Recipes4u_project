@@ -88,6 +88,60 @@ function showRecipeRow(result, count){
       if (count === 1){
         row.style.display = "flex";
       }
+      image.onclick = function (event){
+        let recipe = event.target.parentNode;
+        let modalWindow = document.createElement("div");
+        modalWindow.className = "modal-window";
+        modalWindow.innerHTML = "";
+        for(let key in result['hits']){
+          if(result['hits'][key]['recipe']['label'] === recipe.children[1].children[0].innerText){
+            let nameModal = document.createElement("h2");
+            nameModal.innerText = result['hits'][key]['recipe']['label'];
+            nameModal.className = "name-modal";
+            let imageModal = document.createElement("img");
+            imageModal.src = result['hits'][key]['recipe']['image'];
+            imageModal.className = "image-modal";
+            let ingrModal = document.createElement("p");
+            ingrModal.innerText = "INGREDIENTS" + "\n" + result['hits'][key]['recipe']['ingredientLines'].join("\n").slice(0,200);
+            ingrModal.className = "modal ingr-modal";
+            let healthModal = document.createElement("p");
+            healthModal.innerText = "HEALTH LABELS" + "\n" + result['hits'][key]['recipe']['healthLabels'].join("\n");
+            healthModal.className = "modal health-modal";
+            let dietModal = document.createElement("p");
+            dietModal.innerText = "DIET LABELS" + "\n" + result['hits'][key]['recipe']['dietLabels'].join("\n");
+            dietModal.className = "modal diet-modal";
+            let caloriesModal = document.createElement("p");
+            caloriesModal.innerText = "CALORIES: " + parseFloat(result['hits'][key]['recipe']['calories']).toFixed(2);
+            caloriesModal.className = "modal calories-modal";
+
+            let x = document.createElement("button");
+            x.innerText = "X";
+            x.className = "x";
+
+            modalWindow.appendChild(x);
+            modalWindow.appendChild(nameModal);
+            modalWindow.appendChild(imageModal);
+            modalWindow.appendChild(ingrModal);
+            modalWindow.appendChild(caloriesModal);
+            modalWindow.appendChild(healthModal);
+            modalWindow.appendChild(dietModal);
+            
+
+            let container = document.querySelector(".container");
+            let mask = document.createElement("div");
+            mask.className = "mask";
+            container.appendChild(mask);
+            container.appendChild(modalWindow);
+
+            x.onclick = (event) => {
+              container.removeChild(mask);
+              container.removeChild(modalWindow);
+            };
+
+          }
+        }
+        
+      };
     }
 
     let loadMore = document.createElement("button");
@@ -99,8 +153,12 @@ function showRecipeRow(result, count){
     load = document.querySelector(".load-more");
     load.onclick = () => showRecipeRow(result, count);
     rowCount+=count;
+
   }
   catch(error){
     console.log("No more recipes");
   }
+
+
 }
+
