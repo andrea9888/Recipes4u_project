@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/pastaword.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/pastaword.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/template.css">
     <link rel="stylesheet" href="../CSS/list.css">
@@ -21,8 +21,8 @@
             <li class="nav-li drp-dwn-holder current" id="list"> <span class="list-phone-hover-fix">LIST</span> 
                 <ul class="drp-dwn">
                     <li class="drp-dwn-li"><a href="#" target="_blank" id="pasta">Pasta</a></li>
-                    <li class="drp-dwn-li"><a href="#" id="pizza">Pizza</a></li>
-                    <li class="drp-dwn-li"><a href="#" id="other">Other</a></li>
+                    <li class="drp-dwn-li" ><a href="#" id="pizza" target="_blank">Pizza</a></li>
+                    <li class="drp-dwn-li"><a href="#" id="other" target="_blank">Other</a></li>
                 </ul>
 
             </li>
@@ -34,13 +34,11 @@
     </header>
 
 
-
-
         <img src="../images/webdesign-viljuska.svg" alt="Fork" class="fork">
 
-        <div class="form" id="form">
+        <form class="form" id="form">
             <div class="first-line">
-            <input type="text" class="input" id="input">
+            <input type="text" class="input" placeholder="Type name" id="input" minlength="3" maxlength="15" min="10" max="10000">
             <button class="btn" id="btn">Search</button>
             </div>
             <div class="second-line">
@@ -50,23 +48,19 @@
                 <input type="radio" class="radio-btn" id="cal" name="radio"> <label for="cal">Max calories</label>
                 </div>
                 <div class="range-div">
-                <input type="range" name="range" id="range" class="range" min="2" max="40" onchange="updateTextInput(this.value)"><label for="range">Max ingredients: <span class="rangeValue" id="rangeValue">20</span></label>
+                <input type="range" name="range" id="range" class="range" min="2" max="20" onchange="updateTextInput(this.value)"><label for="range">Results: <span class="rangeValue" id="rangeValue">11</span></label>
                 </div>
 
         </div>
-        </div>
+    </form>
 
     <div class="api-response" id="api-response">
+
+        <div class="no-res">No results...</div>
+    
     </div>
 
-    <div class="navigator">
-        <button class="navigate-btn">Prev</button>
-        <button class="navigate-btn">1</button>
-        <button class="navigate-btn">2</button>
-        <button class="navigate-btn">3</button>
-        <span>...</span>
-        <button class="navigate-btn">7</button>
-        <button class="navigate-btn">Next</button>
+    <div class="navigator" id="navigator">
 
     </div>
 

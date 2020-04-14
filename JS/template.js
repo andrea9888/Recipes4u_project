@@ -1,11 +1,11 @@
-const balMeal = document.getElementById("bal-meal");
-const vegMeal = document.getElementById("veg-meal");
-const lfMeal = document.getElementById("lf-meal");
+const pasta = document.getElementById("pasta");
+const pizza = document.getElementById("pizza");
+const other = document.getElementById("other");
 
 function listHandler(event){
     localStorage.setItem("listType", event.target.id);
 }
 
-balMeal.addEventListener("click", listHandler);
-vegMeal.addEventListener("click", listHandler);
-lfMeal.addEventListener("click", listHandler);
+pasta.addEventListener("click", listHandler);
+pizza.addEventListener("click", listHandler);
+other.addEventListener("click", listHandler);

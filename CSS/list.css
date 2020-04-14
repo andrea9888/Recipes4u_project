@@ -11,7 +11,7 @@
 
 .input {
     width: 70%;
-
+    font-size: 2vw;
 }
 
 .btn{
@@ -40,6 +40,7 @@
 
 .range-div{
     width: 50%;
+    padding-left: 6vw;
 }
 
 .range{
@@ -51,7 +52,9 @@
     opacity: 0.7;
     cursor: pointer;
     transition: .2s;
-    display: inline-block;  
+    display: inline-block;
+    position: relative;
+    z-index: 2;  
 }
 
 .range:hover{
@@ -116,15 +119,17 @@ input[type=range]::-moz-range-thumb {
     width: 100%;
 }
 
-
+.recipe-ing{
+    font-size: 1.5vw;
+}
 
 .recipe-name{
     margin: 1vw 0;
     font-weight: 900;
+    color: rgba(0, 0, 0, 0.836);
 }
 
 .fork{
-    
     z-index: 1;
 }
 
@@ -187,6 +192,10 @@ input[type=range]::-moz-range-thumb {
     .api-response-text{
         font-size: 3vw;
     }
+    .recipe-ing{
+        font-size: inherit;
+        padding-left: 2px;
+    }
 }
 
 .navigate-btn{
@@ -210,4 +219,9 @@ input[type=range]::-moz-range-thumb {
 
 .navigator > *:hover{
     opacity: 0.7;
+}
+
+.no-res{
+    font-size: 4vw;
+    font-family: 'Amatic SC', cursive;
 }
