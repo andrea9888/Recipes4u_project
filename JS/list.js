@@ -112,7 +112,11 @@ function apireq(param){
                 navigate();
             }
             else{
-                setTimeout(() => {let nRes = document.createElement("div");
+                setTimeout(() => {
+                while (apiDiv.firstChild) {
+                    apiDiv.removeChild(apiDiv.lastChild);
+                }
+                let nRes = document.createElement("div");
                 nRes.className = "no-res";
                 nRes.innerHTML = "No results...";
                 navigateDiv.appendChild(nRes);
@@ -121,6 +125,9 @@ function apireq(param){
         }
             )
         .catch(error => {
+            while (apiDiv.firstChild) {
+                apiDiv.removeChild(apiDiv.lastChild);
+            }
             while (navigateDiv.firstChild) {
                 navigateDiv.removeChild(navigateDiv.lastChild);
             }

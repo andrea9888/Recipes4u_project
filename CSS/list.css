@@ -92,7 +92,7 @@ input[type=range]::-moz-range-thumb {
     margin: 5vw 10vw 2vw 10vw;
     padding: 3vw;
     grid-template-columns: 1fr 1fr;
-    background-color: rgb(242,142,124);
+    background-color: rgb(251, 208, 184);
     font-size: 1.7vw;
     font-weight: 500;
     color: #505052;
@@ -160,8 +160,8 @@ input[type=range]::-moz-range-thumb {
 
 
 .fv-btn{
-    background-image: url("../images/fv-icon.png");
-    background-size: 3vw 3vw;
+    background-image: url("../images/star.svg");
+    background-size: 2.5vw 2.5vw;
     background-position: center;
     background-repeat: no-repeat;
 }
