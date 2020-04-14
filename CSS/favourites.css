@@ -62,31 +62,6 @@
 }
 
 
-@media screen and (max-width: 600px){
-    .favourites{
-        margin: 2vw 20vw 2vw 20vw;
-    }
-    .favourites-1, .favourites-2{
-        display: block;
-        margin: 0;
-    }
-    .holder{ 
-        margin-top: 4vw;
-        height: 50vw;
-       }
-    .image{
-        width: 100%;
-        height: 100%;
-    }
-    .btns{
-        font-size: 6vw;
-        height: fit-content;
-        width: fit-content;
-    }
-
-
-}
-
 .plate{
     width: 24vw;
     height: 15vw;
@@ -111,7 +86,6 @@
     top: 16vw;
     left: 9vw;
     */
-    display: none;
     z-index: 4;
 }
 
@@ -224,4 +198,55 @@
     height: 100vh;
     opacity: 0.5;
     display: none;
+}
+
+
+@media screen and (max-width: 600px){
+    .favourites{
+        margin: 2vw 20vw 2vw 20vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .favourites-1, .favourites-2{
+        display: block;
+        margin: 0;
+    }
+    .holder{ 
+        margin-top: 4vw;
+        height: 50vw;
+       }
+    .image{
+        width: 100%;
+        height: 100%;
+    }
+    .btns{
+        font-size: 6vw;
+        height: fit-content;
+        width: fit-content;
+    }
+    .modal{
+        display: block;
+        width: 80vw;
+        height: fit-content;
+        top: 5vw;
+        right: 10vw;
+        background-size: 47vw 30vw;
+        background-color: black;
+    }
+    .modal-image{
+        width: 30vw;
+        height: 30vw;
+        border-radius: 50vw;
+        margin-top: 28vw;
+    }
+    .text-holder{
+        font-size: 5vw;
+    }
+    .modal-label{
+        font-size: 7vw;
+    }
+    .modal-link{
+        margin-bottom: 4vw;
+    }
+
 }
