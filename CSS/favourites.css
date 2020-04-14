@@ -87,6 +87,7 @@
     left: 9vw;
     */
     z-index: 4;
+    display: none;
 }
 
 
@@ -225,7 +226,6 @@
         width: fit-content;
     }
     .modal{
-        display: block;
         width: 80vw;
         height: fit-content;
         top: 5vw;
@@ -249,4 +249,11 @@
         margin-bottom: 4vw;
     }
 
+}
+.nth-t-shw{
+    margin: 2vw 9vw 2vw 9vw;
+    width: 100%;
+    font-size: 8vw;
+    font-family: 'Amatic SC', cursive;
+    display: none;
 }
