@@ -1,0 +1,93 @@
+body{
+    margin:0;
+    padding:0;
+    overflow-x: hidden;
+    
+}
+
+.container{
+    display: grid;
+    grid-template-areas: 
+      'item1'
+      'item2';
+    height:100%;
+    color:white;
+    margin: 10vw 0 20vw;
+  }
+
+.item1{
+    grid-area:item1;
+    position: relative;
+}
+.item2{
+    grid-area:item2;
+    position: relative;
+}
+
+.img-employees{
+    box-shadow:
+      .25vw .25vw .2vw rgba(0, 0, 0, 0.034),
+      .6vw .6vw .5vw rgba(0, 0, 0, 0.048),
+      1.2vw 1.2vw 1vw rgba(0, 0, 0, 0.06),
+      2.2vw 2.2vw 1.7vw rgba(0, 0, 0, 0.072),
+      4vw 4vw 3.3vw rgba(0, 0, 0, 0.086),
+      10vw 10vw 8vw rgba(0, 0, 0, 0.12);            
+}
+
+.p2{
+      position: absolute;
+      top:-40vh;
+      text-align: right;
+      font-size:3vh;
+      left:5vw;
+      width:30vw;
+      height:30vw;
+      font-family: 'Amatic SC', cursive;
+  }
+.img1{
+    position: absolute;
+    top:10vw;
+    right:5vw;
+    width:30vw;
+    padding:0;
+    
+  }
+    
+.p1{
+    position: absolute;
+    top:55vw;
+    right:5vw;
+    width:30vw;
+    height:30vw;
+    font-size:3vh;
+
+    font-family: 'Amatic SC', cursive;
+}
+.img2{
+    position: absolute;
+    top:0;
+    left:5vw;
+    width:30vw;
+    padding:0;
+}
+.chef1{
+  width:30vw;
+  height:25vw;
+  position: absolute;
+  top:-12.5vw;
+  left:0;
+  z-index:1;
+  transform:rotate(-20deg);
+  
+
+}
+.chef2{
+  width:29vw;
+  height:20vw;
+  position: absolute;
+  top:-1vw;
+  right:7vw;
+  z-index:1;
+  transform:rotate(-20deg);
+}           
+
