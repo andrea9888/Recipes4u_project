@@ -18,7 +18,6 @@ function checkLocalStorage(){
             }).then(function(data) {
                 localStorageObj = data;
                 if(localStorageObj["items"].length !== 0){
-                    console.log(localStorageObj);
                     makeTable();
                 }
                 else{
@@ -89,8 +88,8 @@ function makeModal(event){
     for(let t = 1; t < curr[2].length; t++){
         recipeIng = recipeIng + ", " + curr[2][t]["text"]; 
     }
-    if(recipeIng.length > 130){
-        ingred.innerHTML = recipeIng.slice(0, 130) + "...";
+    if(recipeIng.length > 80){
+        ingred.innerHTML = recipeIng.slice(0, 80) + "...";
     }
     else{
         ingred.innerHTML = recipeIng;
@@ -105,6 +104,7 @@ function makeModal(event){
     let modalLink = document.createElement("a");
     modalLink.className = "modal-link";
     modalLink.href = curr[4];
+    modalLink.target = "_blank";
     modalLink.innerHTML = "Recipe link";
     txtHolder.appendChild(modalLink);
     modal.appendChild(txtHolder);
@@ -117,6 +117,9 @@ function makeModal(event){
     modal.appendChild(closeModal);
     modal.style.display = "block";
     maskDiv.style.display = "block";
+    if(document.body.clientWidth > 600){
+        modal.style.left = `calc(${event.clientX}px - 9vw)`;
+    }
     document.body.appendChild(modal);
 }
 
@@ -156,7 +159,6 @@ function deleteElem(event){
             localStorage.setItem("favid", data.id);
         });
 
-    console.log(localStorageObj);
 }
 
 function makeTable(){

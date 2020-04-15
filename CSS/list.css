@@ -250,6 +250,7 @@ input[type=range]::-moz-range-thumb {
 .message{
     font-size: 2vw;
     width: fit-content;
+    width: -moz-fit-content;
     background-color: rgb(185, 44, 18);
     padding: 0 2vw;
     height: 4vw;

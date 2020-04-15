@@ -4,9 +4,15 @@ const navigateDiv = document.getElementById("navigator");
 const apiDiv = document.getElementById("api-response");
 const message = document.getElementById("message");
 var listType = localStorage.getItem("listType");
+
+if(listType !== "undefined" || listType === ""){
+    listType = "pasta";
+}
+
 if (listType === "other"){
     searchBy = "";
 }
+
 const searchBtn = document.getElementById("btn");
 searchBtn.addEventListener("click", search);
 const inpType = document.getElementById("input");
