@@ -1,6 +1,7 @@
 const noSaved = document.getElementById("nth-t-shw");
 const favOne = document.getElementById("favourites-1");
 const favTwo = document.getElementById("favourites-2");
+const maskDiv = document.getElementById("mask-div");
 
 var localStorageObj = {"items": []};
 var id = localStorage.getItem("favid");
@@ -30,16 +31,99 @@ function checkLocalStorage(){
     }
 }
 
+function deleteModal(event){
+    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+    maskDiv.style.display = "none";
+}
 
 function makeModal(event){
-    //pass
+    let imgSrc = event.target.parentNode.parentNode.children[0].src;
+    var curr;
+    for(let i = 0; i < localStorageObj["items"].length; i++){
+        if(localStorageObj["items"][i][0] === imgSrc){
+            curr = localStorageObj["items"][i];
+            break;
+        }
+    }
+    
+/*
+<div class="modal">
+            <div class="image-holder">
+            <img src="../images/test.jpg" alt="" class="image modal-image">
+            </div>
+            
+        <div class="text-holder">
+            <h3 class="modal-label">ALA lfal  la</h3>
+            <div class="modal-ing">qwd, dad2, 2 ad ad a, aas</div>
+            <div class="modal-time">78m</div>
+            <a href="#" class="modal-link">Recipe link</a>
+        </div>
+        
+        <button class="close-modal">X</button>
+        </div>
+*/
+    //Modal
+    let modal = document.createElement("div");
+    modal.className = "modal";
+    //Image holder
+    let imgHolder = document.createElement("div");
+    imgHolder.className = "image-holder";
+    //Image
+    let modalImg = document.createElement("img");
+    modalImg.classList = "image modal-image";
+    modalImg.src = imgSrc;
+    imgHolder.appendChild(modalImg);
+    modal.appendChild(imgHolder);
+    //Text holder
+    let txtHolder = document.createElement("div");
+    txtHolder.className = "text-holder";
+    //Label
+    let label = document.createElement("h3");
+    label.className = "modal-label";
+    label.innerHTML = curr[1];
+    txtHolder.appendChild(label);
+    //Ingredients
+    let ingred = document.createElement("div");
+    ingred.className = "modal-ing";
+    var recipeIng  = curr[2][0]["text"];
+    for(let t = 1; t < curr[2].length; t++){
+        recipeIng = recipeIng + ", " + curr[2][t]["text"]; 
+    }
+    if(recipeIng.length > 130){
+        ingred.innerHTML = recipeIng.slice(0, 130) + "...";
+    }
+    else{
+        ingred.innerHTML = recipeIng;
+    }
+    txtHolder.appendChild(ingred);
+    //Time
+    let modalTime = document.createElement("div");
+    modalTime.className = "modal-time";
+    modalTime.innerHTML = curr[3] + "m";
+    txtHolder.appendChild(modalTime);
+    //Link
+    let modalLink = document.createElement("a");
+    modalLink.className = "modal-link";
+    modalLink.href = curr[4];
+    modalLink.innerHTML = "Recipe link";
+    txtHolder.appendChild(modalLink);
+    modal.appendChild(txtHolder);
+    //Button
+    let closeModal = document.createElement("button");
+    closeModal.className = "close-modal";
+    closeModal.innerHTML = "X";
+    closeModal.addEventListener("click", deleteModal);
+    //Event
+    modal.appendChild(closeModal);
+    modal.style.display = "block";
+    maskDiv.style.display = "block";
+    document.body.appendChild(modal);
 }
 
 function deleteElem(event){
-
     let imgSrc = event.target.parentNode.parentNode.children[0].src;
 
-    for(var i = 0; i < localStorageObj["items"].length; i++){
+    for(let i = 0; i < localStorageObj["items"].length; i++){
         if(localStorageObj["items"][i][0] === imgSrc){
             if(i < 4){
                 localStorageObj["items"].splice(i, 1);
