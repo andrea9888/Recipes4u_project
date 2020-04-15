@@ -230,6 +230,7 @@
         width: -moz-fit-content;
     }
     .modal{
+        position: fixed;
         width: 80vw;
         transform: none;
         height: fit-content;
