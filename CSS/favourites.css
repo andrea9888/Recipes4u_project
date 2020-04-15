@@ -23,6 +23,7 @@
     opacity: 0.5;
 }
 .holder{
+    width: 13vw;
     height: 10vw;
     background-color: rgb(251, 208, 184);
     position: relative;
@@ -215,6 +216,7 @@
     .holder{ 
         margin-top: 4vw;
         height: 50vw;
+        width: 100%;
        }
     .image{
         width: 100%;

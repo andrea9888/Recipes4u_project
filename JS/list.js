@@ -2,6 +2,7 @@ var btnsList = document.getElementsByClassName("radio-btn");
 var searchBy = document.getElementById("name").id;
 const navigateDiv = document.getElementById("navigator");
 const apiDiv = document.getElementById("api-response");
+const message = document.getElementById("message");
 var listType = localStorage.getItem("listType");
 if (listType === "other"){
     searchBy = "";
@@ -12,6 +13,12 @@ const inpType = document.getElementById("input");
 var navigateObj;
 var hitsList;
 var localStorageObj = {"items": []};
+let nRes = document.createElement("div");
+nRes.className = "no-res";
+nRes.innerHTML = "No results...";
+navigateDiv.appendChild(nRes);
+
+
 
 var id = localStorage.getItem("favid");
 if(id && id !== "undefined"){
@@ -112,7 +119,6 @@ function apireq(param){
                 navigate();
             }
             else{
-                setTimeout(() => {
                 while (apiDiv.firstChild) {
                     apiDiv.removeChild(apiDiv.lastChild);
                 }
@@ -120,7 +126,6 @@ function apireq(param){
                 nRes.className = "no-res";
                 nRes.innerHTML = "No results...";
                 navigateDiv.appendChild(nRes);
-                }, 1000)
             }
         }
             )
@@ -290,11 +295,18 @@ function navHandler(event){
     setTable();
 }
 
+function sendMesage(){
+    message.style.display = "block";
+    let x = setInterval(() => {
+        message.style.display = "none";
+        clearInterval(x); 
+    }, 5000);
+}
+
 function addToFav(event){
     
     let curr = event.target.parentNode.children[0].src;
     var tst = 0;
-
     for(let x = 0; x < localStorageObj["items"].length; x++){
         if(localStorageObj["items"][x][0] === curr){
             tst = 1;
@@ -303,6 +315,7 @@ function addToFav(event){
 
     if(localStorageObj["items"].length >= 10){
         tst = 1;
+        sendMesage();
     }
     
     if(tst === 0){
@@ -312,8 +325,6 @@ function addToFav(event){
                 localStorageObj["items"].push([hitsList[x]["recipe"]["image"], hitsList[x]["recipe"]["label"], hitsList[x]["recipe"]["ingredients"], hitsList[x]["recipe"]["totalTime"], hitsList[x]["recipe"]["url"]]);
         
             }
-        }
-        
         
         fetch('https://api.jsonbin.io/b', {
             method: 'post',
@@ -328,6 +339,5 @@ function addToFav(event){
         }).then(function(data) {
             localStorage.setItem("favid", data.id);
         });
-
-    console.log(localStorageObj);
+    }
     }
