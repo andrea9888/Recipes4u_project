@@ -1,0 +1,399 @@
+.top-rated{
+    width:80vw;
+    margin:0 auto;
+    padding:0 0 2vw;
+    background-color: rgb(251, 208, 184);
+
+}
+.top-row{
+    display: inline;
+    margin:2vw auto;
+}
+.top-product{
+    width:80vw;
+    display: flex;
+    
+}
+.top-images{
+    width:30vw;
+    height:30vw;
+    margin:auto;
+    cursor: pointer;
+}
+.top-text{
+    width: 40vw;
+    height:35vw;
+    font-size:2vw;
+    color: #505052;
+    margin: 0 3vw;
+}
+.load-more{
+    background-color: white;
+    font-family: 'Amatic SC', cursive;
+    width:20vw;
+    font-size: 2vw;
+    margin:2vw 30vw;
+}
+.mask {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal-window{
+    position: fixed;
+    top:5vw;
+    left:5vw;
+    bottom: 5vw;
+    right:5vw;
+    width:90vw;
+    height:90vh;
+    background-color: white;
+    margin:auto;
+    display: grid;
+    grid-template-areas: 
+    'name'
+    'image'
+    'ingr' 
+    'health' 
+    'diet' 
+    'calories';
+    border:5px solid rgb(242, 142, 124);
+    padding-bottom:5vw;
+}
+.x{
+    position: absolute;
+    top:0;
+    right:0;
+    width:5vw;
+    height:5vh;
+    font-size:3vw;
+    text-align: center;
+}
+.image-modal{
+    grid-area: image;
+    width:30vh;
+    margin:0 auto;
+}
+.name-modal{
+    grid-area: name;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 5vw;
+
+}
+.ingr-modal{
+    grid-area: ingr;
+    
+}
+.health-modal{
+    grid-area:health;
+    
+}
+.calories-modal{
+    grid-area: calories;
+}
+.diet-modal{
+    grid-area: diet;
+}
+.modal{
+    font-size: 1.5vh;
+    width: 30vh;
+    margin:2vh auto;
+    word-break: break-all;
+}
+.top-rated-text{
+    font-family: 'Amatic SC', cursive;
+    font-style: italic;
+    font-size: 3vh;
+    height:10vw;
+    margin:5vh 10vw;
+    color:white;
+    text-align: right;
+    
+}
+.container1{
+    display: flex;
+}
+.side-bar{
+    width:20vw;
+    display: none;
+}
+
+.slider{
+    width:80vw;
+    margin:auto;
+    display:flex;
+    background-color: white;
+    position: relative;
+    
+}
+.slider-content{
+    width:70vw;
+    display:flex;
+    padding:2vw 2vw 2vw 0;
+    margin:auto;
+    position:relative;
+}
+.prev, .next{
+    font-size: 5vw;
+    position: absolute;
+    color:rgb(242, 142, 124);
+    cursor: pointer;
+}
+.prev{
+    top:10vw;
+    left:1vw;
+}
+.next{
+    top:10vw;
+    right:1vw;
+}
+
+.new-food-group{
+    width:70vw;
+    display:flex;
+    display: none;
+}
+.new-food-image{
+    width:22vw;
+    margin-right:2vw;
+}
+.new-food-name{
+    position: absolute;
+    top:10vw;
+    width:20vw;
+    height:3vw;
+    font-size:3vw;
+    text-align: center;
+    margin-left:1vw;
+    font-family: 'Amatic SC', cursive;
+    display: none;
+}
+
+.new-food-image:hover + .new-food-name{
+    display:block;
+    transition: ease-in .2s;
+}
+.new-food-image:hover{
+    opacity: 0.2;
+}
+.read-more{
+    outline: none;
+    cursor: pointer;
+    margin:0 5vw;
+    font-size: 2vw;
+    letter-spacing: 1px;
+    font-family: 'Amatic SC', cursive;
+    background-color: rgb(214,214,214);
+}
+.icon{
+    display:none;
+}
+
+@media screen and (min-width: 1200px){
+    .top-rated{
+        width:65vw;
+        float:left;
+        margin: -17vw 10vw 2vw;
+        
+    }
+    .top-rated-text{
+        height:2.5vw;
+        margin-top: -30vw;
+    }
+    .top-row{
+        width:65vw;
+        height:10vw;
+        margin:2vw 0 5vw 1vw;
+        display: flex;
+    }
+    h3{
+        font-size: 1vw;
+    }
+    .top-product{
+        width:21.5vw;
+    }
+    .top-text{
+        width:16.5vw;
+        height:10vw;
+        font-size:0.7vw;
+        margin:1vw 0.5vw 0 0.5vw;
+        
+        
+    }
+    .top-images{
+        width:10vw;
+        height:10vw;
+        margin:2vw 0 0 0;
+    }
+    .load-more{
+        margin: 2vw 20vw;
+        z-index:2;
+    }
+    .side-bar{
+        display: flex;
+        flex-direction: column;
+        margin-left: -2vw;
+    }
+    .slider{
+        width:65vw;
+        margin-left:10vw;
+        margin-top: 0;
+        padding-top: 2vw;
+
+    }
+    .sllider-content{
+        width:55vw;
+        
+    }
+    .new-food-group{
+        width:55vw;
+        padding-left:5vw;
+    }
+    .new-food-image{
+        width:17vw;
+        cursor: pointer;
+    }
+    .prev{
+        top:9vw;
+        left:1vw;
+    }
+    .next{
+        top:9vw;
+        right:1vw;
+    }
+    .read-more{
+        font-size: 1.5vw;
+    }
+    .new-food-name{
+        font-size:2vw;
+        height:2vw;
+        top:7vw;
+        width:15vw;
+    }
+    .fork{
+        position:absolute;
+        top:40vw;
+        width:50vw;
+        right:-15vw;
+        height:80vw;
+        transform:rotate(-15deg);
+        z-index: -1;
+        
+    }
+    .best{
+        width:11vw;
+        height:35vw;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        font-style: italic;
+        font-size:2vw;
+        color:rgb(242, 142, 124);
+        
+    }
+    .best-image{
+        width: 9vw;
+        margin:.5vw auto 0;
+        cursor: pointer; 
+    }
+    .best-image:hover{
+        opacity:0.7;
+    }
+    .fb-page{
+        display: none;
+    }
+}
+
+@media screen and (min-width:900px){
+    .top-rated{
+        margin: 5vw 10vw 2vw;
+        
+    }
+    .icon{
+        grid-area: icon;
+        display:block;
+        width:13vw;
+        margin: 0 auto;
+    }
+    .icon:hover {
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
+    .modal-window{
+        grid-template-areas: 
+        'name name name name'
+        'image ingr icon icon'
+        'image health diet calories';
+       
+    }
+    .x{
+        width:3vw;
+        height:3vw;
+        font-size:2vw;
+    }
+    .image-modal{
+        grid-area: image;
+        width:35vw;
+        height:65vh;
+        margin:0 5vw;
+    }
+    .name-modal{
+        grid-area: name;
+        text-align: center;
+        font-family: 'Amatic SC', cursive;
+        font-size: 3vw;
+    
+    }
+    .modal{
+        font-size: 1.5vw;
+        width:15vw;
+        margin:0;
+    }
+   
+    .top-rated-text{
+        font-size: 3.5vw;
+        width:60vw;
+        margin-top:5vw;
+        margin-bottom: 7vw;
+    }
+  
+}
+@media screen and (min-width:1600px){
+    .fb-page{
+        display:block;
+        margin:2vw 0;
+        overflow: hidden;
+    }
+    .top-rated-text{
+        margin-top:-35vw;
+    }
+    .fork{
+        position:absolute;
+        top:48vw;
+        width:40vw;
+        right:-12vw;
+        height:80vw;
+        
+    }
+}
