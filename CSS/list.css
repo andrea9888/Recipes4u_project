@@ -19,6 +19,8 @@
     font-family: 'Amatic SC', cursive;
     font-size: 2vw;
     line-height: 0;
+    position: relative;
+    z-index: 3;
 }
 
 .second-line{
@@ -243,4 +245,20 @@ input[type=range]::-moz-range-thumb {
 .no-res{
     font-size: 4vw;
     font-family: 'Amatic SC', cursive;
+}
+
+.message{
+    font-size: 2vw;
+    width: fit-content;
+    width: -moz-fit-content;
+    background-color: rgb(185, 44, 18);
+    padding: 0 2vw;
+    height: 4vw;
+    line-height: 4vw;
+    position: fixed;
+    top: 2vw;
+    z-index: 3;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
 }
