@@ -1,5 +1,6 @@
 let topRated = document.querySelector(".top-rated")
 var obj;
+const maskHelper = document.getElementById("mask");
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -15,7 +16,6 @@ var requestOptions = {
 };
 var url = new URL("https://api.edamam.com/search");
 url.search = new URLSearchParams(params).toString();
-console.log(url['href'])
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(result => {
@@ -119,7 +119,6 @@ function showRecipeRow(result, count){
   }
 }
 function openModalWindow(event){
-    console.log("ulazi")
     let recipe = event.target.parentNode;
     let modalWindow = document.createElement("div");
     modalWindow.className = "modal-window";
@@ -136,7 +135,6 @@ function openModalWindow(event){
       }
       
       if( checkObj === check){
-        console.log("yes")
         let nameModal = document.createElement("h2");
         nameModal.innerText = obj['hits'][key]['recipe']['label'];
         nameModal.className = "name-modal";
@@ -164,6 +162,14 @@ function openModalWindow(event){
         icon.className = "icon";
         icon.src = "./images/boil.svg";
 
+        x.addEventListener("click", (event) => {
+          maskHelper.style.display = "none";
+
+          container.removeChild(modalWindow);
+        });
+
+
+
         modalWindow.appendChild(x);
         modalWindow.appendChild(nameModal);
         modalWindow.appendChild(imageModal);
@@ -175,15 +181,10 @@ function openModalWindow(event){
         
 
         let container = document.querySelector(".container");
-        let mask = document.createElement("div");
-        mask.className = "mask";
-        container.appendChild(mask);
+        maskHelper.style.display = "block";
         container.appendChild(modalWindow);
 
-        x.onclick = (event) => {
-          container.removeChild(mask);
-          container.removeChild(modalWindow);
-        };
+        
 
       }
     }   
