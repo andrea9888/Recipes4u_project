@@ -386,7 +386,7 @@
 }
 @media screen and (min-width:1600px){
     .fb-page{
-        display:block;
+        display:block !important;
         margin:2vw 0;
         overflow: hidden;
     }
