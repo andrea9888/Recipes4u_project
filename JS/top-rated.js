@@ -162,7 +162,7 @@ function openModalWindow(event){
 
         let icon = document.createElement("img");
         icon.className = "icon";
-        icon.src = "../images/boil.svg";
+        icon.src = "./images/boil.svg";
 
         modalWindow.appendChild(x);
         modalWindow.appendChild(nameModal);

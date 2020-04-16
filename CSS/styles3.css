@@ -91,3 +91,19 @@ body{
   transform:rotate(-20deg);
 }           
 
+@media screen and (max-width: 500px){
+  .img2{
+    top:20vw;
+  }
+  .chef1{
+    top:8vw;
+  }
+}
+@media screen and (max-width: 380px){
+  .p1{
+    font-size:5vw;
+  }
+  .p2{
+    font-size:5vw;
+  }
+}
