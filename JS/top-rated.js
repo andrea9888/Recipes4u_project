@@ -161,11 +161,13 @@ function openModalWindow(event){
         let icon = document.createElement("img");
         icon.className = "icon";
         icon.src = "./images/boil.svg";
+
         x.addEventListener("click", (event) => {
           maskHelper.style.display = "none";
 
           container.removeChild(modalWindow);
         });
+
 
 
         modalWindow.appendChild(x);
