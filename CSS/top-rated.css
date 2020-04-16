@@ -45,6 +45,7 @@
 
 .modal-window{
     position: fixed;
+    z-index:3;
     top:5vw;
     left:5vw;
     bottom: 5vw;
@@ -345,7 +346,7 @@
         'name name name name'
         'image ingr icon icon'
         'image health diet calories';
-       z-index:2;
+       z-index:3;
     }
     .x{
         width:3vw;
