@@ -1,0 +1,109 @@
+@media only screen and (min-width: 1200px){
+    .container{
+        grid-template-areas:'item1 item2';
+        grid-column-gap:2vw;
+        grid-row-gap:5vw;
+        margin:0;
+        height: 40vw;
+        
+    }
+    .item1{
+        height:30vw;
+    }
+    .item2{
+        height:30vw;
+    }
+    
+    .img1{
+        width:20vw;
+        height:28vw;
+        top:7vw;
+        margin:0;
+        left:25vw;
+        padding:0;
+    }
+    .p1{
+        width:20vw;
+        top:10vw;
+        left:27vw;
+        text-align: left;
+        font-size: 2vw;
+        letter-spacing: .5px;
+        
+    }
+    .img2{
+        width:20vw;
+        height:28vw;
+        margin:0;
+        top:7vw;
+        right:25vw;
+        padding:0;
+    }
+    .p2{
+        top:10vw;
+        left:2vw;
+        width:20vw;
+        text-align: right;
+        font-size: 2vw;
+        letter-spacing: .5px;
+    }
+    
+    .flip-card {
+        background-color: transparent;
+        perspective: 100vw;
+      }
+      
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+    .item1:hover .flip-card-inner1 {
+        transform: rotateY(-180deg);
+    }
+    .item2:hover .flip-card-inner2 {
+        transform: rotateY(180deg);
+    }
+    .item3:hover .flip-card-inner3 {
+        transform: rotateX(180deg);
+    }
+      
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        
+      }
+   
+    .flip-card-back1{
+        transform: rotateY(-180deg);
+    } 
+
+    .flip-card-back2 {
+        transform: rotateY(180deg);
+    }
+    .chef1{
+        width:22vw;
+        height:25vw;
+        position: absolute;
+        top:-5.5vw;
+        right:27vw;
+        z-index:1;
+        transform:rotate(-20deg);
+        
+
+    }
+    .chef2{
+        width:21vw;
+        height:20vw;
+        position: absolute;
+        top:-4vw;
+        left:23vw;
+        z-index:1;
+        transform:rotate(-20deg);
+    }                 
+}

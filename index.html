@@ -17,18 +17,18 @@
 
 
             <nav class="nav-bar">
-            
-                <li class="nav-li current" id="home"><a href="#">HOME</a></li>
+        
+                <li class="nav-li current" id="home"><a href="http://127.0.0.1:5500/index.html">HOME</a></li>
                 <li class="nav-li drp-dwn-holder" id="list"> <span class="list-phone-hover-fix">LIST</span> 
                     <ul class="drp-dwn">
                         <li class="drp-dwn-li"><a href="#" target="_blank" id="bal-meal">Balanced meal</a></li>
                         <li class="drp-dwn-li"><a href="#" id="veg-meal">Vegeterian meal</a></li>
-                        <li class="drp-dwn-li"><a href="#" id="lf-meal">Low-fat meal</a></li>
+                        <li class="drp-dwn-li"><a href="#" id="lf-meal" target="_blank">Low-fat meal</a></li>
                     </ul>
-
+    
                 </li>
                 <li class="nav-li" id="saved"><a href="#">FAVOURITES</a></li>
-                <li class="nav-li" id="about-us"><a href="#">ABOUT US</a></li>
+                <li class="nav-li" id="about-us"><a href="http://127.0.0.1:5500/HTML/about.html">ABOUT US</a></li>
             
             </nav>
 
@@ -40,9 +40,16 @@
                     <div class="slider-content"></div>
                     <div class="next">&#10095;</div>
                 </div>
-                <div class="side-bar"></div>
+                <div class="side-bar">
+                    <div class="best">Prep your meal in no-time!</div>
+                    <div class="fb-page" data-href="https://www.facebook.com/Recipes4u-112174067118912/" data-tabs="timeline" data-width="100" data-height="500" data-small-header="true" adapt_container_width="true" data-hide-cover="false" >
+                        <blockquote cite="https://www.facebook.com/Recipes4u-112174067118912/" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/Recipes4u-112174067118912/">Recipes4u</a>
+                        </blockquote>
+                    </div>
+                </div>
             </div>
-            <p class="top-rated-text">Who says pasta has to make you fat? Here's our top low calory pasta dishes!</p>
+            <p class="top-rated-text">Who says pasta has to make you fat? Here's our top list of low calory pasta dishes!</p>
             <div class="top-rated"></div>
 
             <img src="images/webdesign-viljuska.svg" alt="Fork" class="fork">
@@ -59,8 +66,8 @@
 
 
         </footer>
-
-        <script src="./JS/template.js"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>        
+        <script src="../JS/template.js"></script>
         <script src="./JS/top-rated.js"></script>
     </div>
 </body>

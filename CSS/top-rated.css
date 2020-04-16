@@ -1,6 +1,6 @@
 .top-rated{
     width:80vw;
-    margin:auto;
+    margin:0 auto;
     padding:0 0 2vw;
     background-color: rgb(251, 208, 184);
 
@@ -109,8 +109,10 @@
     font-family: 'Amatic SC', cursive;
     font-style: italic;
     font-size: 3vh;
+    height:10vw;
     margin:5vh 10vw;
     color:white;
+    text-align: right;
     
 }
 .container1{
@@ -127,6 +129,7 @@
     display:flex;
     background-color: white;
     position: relative;
+    
 }
 .slider-content{
     width:70vw;
@@ -187,12 +190,20 @@
     font-family: 'Amatic SC', cursive;
     background-color: rgb(214,214,214);
 }
+.icon{
+    display:none;
+}
+
 @media screen and (min-width: 1200px){
     .top-rated{
         width:65vw;
         float:left;
-        margin: 0 10vw 2vw;
+        margin: -17vw 10vw 2vw;
         
+    }
+    .top-rated-text{
+        height:2.5vw;
+        margin-top: -30vw;
     }
     .top-row{
         width:65vw;
@@ -226,10 +237,12 @@
     .side-bar{
         display: flex;
         flex-direction: column;
+        margin-left: -2vw;
     }
     .slider{
         width:65vw;
         margin-left:10vw;
+        margin-top: 0;
         padding-top: 2vw;
 
     }
@@ -243,6 +256,7 @@
     }
     .new-food-image{
         width:17vw;
+        cursor: pointer;
     }
     .prev{
         top:9vw;
@@ -261,13 +275,75 @@
         top:7vw;
         width:15vw;
     }
+    .fork{
+        position:absolute;
+        top:40vw;
+        width:50vw;
+        right:-15vw;
+        height:80vw;
+        transform:rotate(-15deg);
+        z-index: -1;
+        
+    }
+    .best{
+        width:11vw;
+        height:35vw;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        font-style: italic;
+        font-size:2vw;
+        color:rgb(242, 142, 124);
+        
+    }
+    .best-image{
+        width: 9vw;
+        margin:.5vw auto 0;
+        cursor: pointer; 
+    }
+    .best-image:hover{
+        opacity:0.7;
+    }
+    .fb-page{
+        display: none;
+    }
 }
 
 @media screen and (min-width:900px){
+    .top-rated{
+        margin: 5vw 10vw 2vw;
+        
+    }
+    .icon{
+        grid-area: icon;
+        display:block;
+        width:13vw;
+        margin: 0 auto;
+    }
+    .icon:hover {
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
     .modal-window{
         grid-template-areas: 
         'name name name name'
-        'image ingr ingr ingr'
+        'image ingr icon icon'
         'image health diet calories';
        
     }
@@ -294,8 +370,30 @@
         width:15vw;
         margin:0;
     }
+   
     .top-rated-text{
-        font-size: 3vw;
+        font-size: 3.5vw;
+        width:60vw;
+        margin-top:5vw;
+        margin-bottom: 7vw;
     }
   
+}
+@media screen and (min-width:1600px){
+    .fb-page{
+        display:block;
+        margin:2vw 0;
+        overflow: hidden;
+    }
+    .top-rated-text{
+        margin-top:-35vw;
+    }
+    .fork{
+        position:absolute;
+        top:48vw;
+        width:40vw;
+        right:-12vw;
+        height:80vw;
+        
+    }
 }
